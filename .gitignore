@@ -5,4 +5,5 @@ npm-debug.log
 dist/
 logs/
 dump.rdb
-src/*.js
+src/**/*.js
+*.js.map
