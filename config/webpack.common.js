@@ -30,8 +30,7 @@ module.exports = {
 			loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
 		}, {
 			test: /\.scss$/,
-			exclude: [/\/plugin\//, /node_modules/],
-			loader: 'style!css!autoprefixer!sass'
+			loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!sass?sourceMap')
 		}, {
 			test: /\.css$/,
 			include: helpers.root('src', 'app'),
