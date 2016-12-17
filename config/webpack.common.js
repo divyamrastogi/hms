@@ -29,6 +29,10 @@ module.exports = {
 			exclude: helpers.root('src', 'app'),
 			loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
 		}, {
+			test: /\.scss$/,
+			exclude: [/\/plugin\//, /node_modules/],
+			loader: 'style!css!autoprefixer!sass'
+		}, {
 			test: /\.css$/,
 			include: helpers.root('src', 'app'),
 			loader: 'raw'
@@ -36,6 +40,13 @@ module.exports = {
 	},
 
 	plugins: [
+		new webpack.ProvidePlugin({
+			$: "jquery",
+			jQuery: "jquery",
+			"window.jQuery": "jquery",
+			Hammer: "hammerjs/hammer"
+		}),
+
 		new webpack.optimize.CommonsChunkPlugin({
 			name: ['app', 'vendor', 'polyfills']
 		}),
