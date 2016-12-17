@@ -2,8 +2,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
-
 import { HospitalService } from '../services/hospital.service';
+import './login.scss';
 
 @Component({
 	selector: 'user-login',
