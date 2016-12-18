@@ -5,13 +5,11 @@ import { Location }                 from '@angular/common';
 import { HospitalService } from '../services/hospital.service';
 
 @Component({
-	selector: 'register-patient',
-	templateUrl: './registration.component.html'
+	selector: 'user-login',
+	templateUrl: './login.component.html',
+	styleUrls: ['./login.scss']
 })
-export class RegistrationComponent implements OnInit {
-	goBack(): void {
-		this.location.back();
-	}
+export class LoginComponent implements OnInit {
 
 	constructor(
 		private heroService: HospitalService,
