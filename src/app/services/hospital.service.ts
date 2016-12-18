@@ -6,7 +6,7 @@ import { Registration } from '../registration/registration';
 @Injectable()
 export class HospitalService {
 	// 192.168.1.11
-	hostname: string = 'http://localhost:3000';
+	hostname: string = process.env.ENV === 'production' ? '' : 'http://localhost:3000';
 	citiesUrl: string = `${this.hostname}/city?prefix=`;
 	sourcesUrl: string = `${this.hostname}/source?source=`;
 	turnUrl: string = `${this.hostname}/turnno`;
@@ -15,6 +15,7 @@ export class HospitalService {
 	getAuthorizedPersonUrl: string = `${this.hostname}/autorisation`;
 	banksUrl: string = `${this.hostname}/bank`;
 	registerUrl: string = `${this.hostname}/patient/register`;
+
 	isLoggedIn(): Promise<boolean> {
 		return Promise.resolve(true);
 	}
@@ -77,6 +78,7 @@ export class HospitalService {
 		return Promise.reject(error.message || error);
 	}
 
-	constructor(private http: Http) { }
-
+	constructor(private http: Http) {
+		alert(process.env.ENV);
+	}
 }

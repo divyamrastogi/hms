@@ -9,6 +9,6 @@ import '@angular/router';
 import 'rxjs';
 // Other vendors for example jQuery, Lodash or Bootstrap
 import 'materialize-css';
-import 'materialize-css/sass/materialize.scss';
 import 'angular2-materialize';
+import 'materialize-css/sass/materialize.scss';
 // You can import js, ts, css, sass, ...
