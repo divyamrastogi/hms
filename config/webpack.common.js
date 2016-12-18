@@ -29,12 +29,17 @@ module.exports = {
 			exclude: helpers.root('src', 'app'),
 			loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
 		}, {
-			test: /\.scss$/,
-			loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!sass?sourceMap')
-		}, {
 			test: /\.css$/,
 			include: helpers.root('src', 'app'),
 			loader: 'raw'
+		}, {
+			test: /\.scss$/,
+			exclude: helpers.root('src', 'app'),
+			loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!sass?sourceMap')
+		}, {
+			test: /\.scss$/,
+			include: helpers.root('src', 'app'),
+			loader: 'raw!sass'
 		}]
 	},
 
