@@ -31,7 +31,7 @@ export class RegistrationComponent implements OnInit {
 	}
 
 	getSources($event: string): void {
-		if ($event && /self/i.test($event)) {
+		if ($event && !/self/i.test($event)) {
 			this.hospitalService.getSources($event)
 				.then((sources) => {
 					return this.sources = sources;

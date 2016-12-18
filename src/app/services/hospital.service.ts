@@ -85,6 +85,5 @@ export class HospitalService {
 	}
 
 	constructor(private http: Http) {
-		alert(process.env.ENV);
 	}
 }

@@ -124,7 +124,7 @@
                                 </select>
                                 <label>Source</label>
                             </div>
-                            <div class="col m3 s12 input-field">
+                            <div class="col m3 s12 input-field" *ngIf="registration.hospitalInfo.sourceType != 'SELF'">
                                 <select required name="source" materialize="material_select"
                                     [materializeSelectOptions]="sources"
                                     [(ngModel)]="registration.hospitalInfo.sourceId">
