@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 				if (/FAILURE/i.test(response.status)) {
 					this.router.navigate(['login']);
 				} else if (/SUCCESS/i.test(response.status)) {
-					this.router.navigate(['register']);
+					this.router.navigate(['registration']);
 				}
 			}, (response: any) => {
 				Materialize.toast('Some error occured. ' + JSON.stringify(response), 1000);
