@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 	styleUrls: ['./login.scss']
 })
 export class LoginComponent implements OnInit {
-
+	credentials: any = {};
 	constructor(
 		private hospitalService: HospitalService,
 		private route: ActivatedRoute,
@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
 				} else if (/SUCCESS/i.test(response.status)) {
 					this.router.navigate(['register']);
 				}
+			}, (response: any) => {
+				Materialize.toast('Some error occured. ' + JSON.stringify(response), 1000);
 			});
 	}
 
