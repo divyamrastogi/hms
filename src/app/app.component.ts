@@ -15,18 +15,12 @@ export class AppComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
-		this.hospitalService.isLoggedIn()
-			.then((loggedIn) => {
-				if (loggedIn) {
-					this.router.navigate(['registration'])
-						.then(() => {
-							Materialize.toast('Please start registering', 2000);
-						});
-				} else {
-					this.router.navigate(['login'])
-						.then(() => {
-							Materialize.toast('Please login first.', 2000);
-						});
+		this.hospitalService.login({})
+			.then((response: any) => {
+				if (/FAILURE/i.test(response.status)) {
+					this.router.navigate(['login']);
+				} else if (/SUCCESS/i.test(response.status)) {
+					this.router.navigate(['register']);
 				}
 			});
 	}

@@ -7,6 +7,7 @@ import { Registration } from '../registration/registration';
 export class HospitalService {
 	// 192.168.1.11
 	hostname: string = process.env.ENV === 'production' ? '' : 'http://localhost:3000';
+	loginUrl: string = `${this.hostname}/login`;
 	citiesUrl: string = `${this.hostname}/city?prefix=`;
 	sourcesUrl: string = `${this.hostname}/source?source=`;
 	turnUrl: string = `${this.hostname}/turnno`;
@@ -16,10 +17,6 @@ export class HospitalService {
 	banksUrl: string = `${this.hostname}/bank`;
 	registerUrl: string = `${this.hostname}/patient/register`;
 
-	isLoggedIn(): Promise<boolean> {
-		return Promise.resolve(true);
-	}
-
 	registerPatient(registration: Registration): Promise<any> {
 		let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
@@ -27,13 +24,22 @@ export class HospitalService {
 			.toPromise()
 			.then((response) => response.json() as any)
 			.catch(this.handleError);
+	}
 
+	login(credentials: any): Promise<Object> {
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(this.loginUrl, credentials, options)
+			.toPromise()
+			.then((response: any) => {
+				return response.json() as any;
+			});
 	}
 
 	get(url: string): Promise<Object[]> {
 		return this.http.get(url)
 			.toPromise()
-			.then((response) => response.json() as Object[])
+			.then((response) => response.json() as any)
 			.catch(this.handleError);
 	}
 
